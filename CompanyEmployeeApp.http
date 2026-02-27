@@ -1,0 +1,57 @@
+@CompanyEmployeeApp_HostAddress = http://localhost:5297
+
+### Get all companies
+GET {{CompanyEmployeeApp_HostAddress}}/api/companies
+Accept: application/json
+
+### Get company by id
+GET {{CompanyEmployeeApp_HostAddress}}/api/companies/1
+Accept: application/json
+
+### Get employees of company 1
+GET {{CompanyEmployeeApp_HostAddress}}/api/companies/1/employees
+Accept: application/json
+
+### Create company
+POST {{CompanyEmployeeApp_HostAddress}}/api/companies
+Content-Type: application/json
+
+{
+  "name": "NewCo",
+  "address": "789 Startup Lane"
+}
+
+### Get all employees
+GET {{CompanyEmployeeApp_HostAddress}}/api/employees
+Accept: application/json
+
+### Get employee with details (OOP composition)
+GET {{CompanyEmployeeApp_HostAddress}}/api/employees/1/details
+Accept: application/json
+
+### OOP polymorphism demo - GetDisplayInfo() for each employee
+GET {{CompanyEmployeeApp_HostAddress}}/api/employees/entity-demo
+Accept: application/json
+
+### Create employee
+POST {{CompanyEmployeeApp_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "firstName": "Alice",
+  "lastName": "Brown",
+  "salary": 52000,
+  "companyId": 1
+}
+
+### Add details to employee
+POST {{CompanyEmployeeApp_HostAddress}}/api/employees/details
+Content-Type: application/json
+
+{
+  "employeeId": 3,
+  "email": "bob@globalsoft.com",
+  "phone": "555-0199",
+  "department": "Sales",
+  "joinDate": "2024-01-15"
+}

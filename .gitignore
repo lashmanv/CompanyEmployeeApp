@@ -1,0 +1,10 @@
+# SQLite database
+*.db
+*.db-shm
+*.db-wal
+
+# Build / IDE
+bin/
+obj/
+.vs/
+*.user

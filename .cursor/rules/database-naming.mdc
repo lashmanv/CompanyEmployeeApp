@@ -1,0 +1,19 @@
+---
+description: Database names must always be lowercase snake_case (tables, columns, keys).
+alwaysApply: true
+---
+
+# Database naming rule (permanent)
+
+**All database-related identifiers must use lowercase snake_case.**
+
+- **Table names:** `companies`, `employees`, `employee_details` (not `Companies`, `EmployeeDetails`).
+- **Column names:** `id`, `name`, `address`, `first_name`, `company_id`, `employee_id`, `date_of_birth`, `join_date`, etc.
+- **Primary key / foreign key column names:** same rule (e.g. `id`, `company_id`, `employee_id`).
+
+Apply this whether using:
+- Raw SQL or query strings
+- Entity Framework (e.g. `ToTable("companies")`, column config, or a snake_case convention)
+- Migrations or manual DDL
+
+When adding new tables or columns, always use lowercase snake_case in the database.

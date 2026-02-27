@@ -1,0 +1,21 @@
+.nav {
+  background: #1a1a2e;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.nav a {
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav a:hover,
+.nav a.active {
+  color: #7eb8da;
+}
+.main {
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}

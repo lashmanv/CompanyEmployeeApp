@@ -16,7 +16,13 @@ public class CompanyService : ICompanyService
 
     public async Task<Company?> GetByIdAsync(int id) =>
         await _db.Companies.FindAsync(id);
-
+        
+    public async Task<List<string>> GetAllNamesByAddressAsync(string address) =>
+        await _db.Companies
+            .Where(c => c.Address == address)
+            .Select(c => c.Name)
+            .ToListAsync();
+ 
     public async Task<Company> AddAsync(string name, string address)
     {
         var company = new Company(0, name, address ?? "");

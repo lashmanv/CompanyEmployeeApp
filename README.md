@@ -64,7 +64,7 @@ cd CompanyEmployeeApp
 dotnet run
 ```
 
-API runs at **http://localhost:5297**. Swagger: **http://localhost:5297/swagger**.
+API runs at **http://localhost:5297**. Root `/` returns a simple message.
 
 ### 3. Start the Angular frontend (optional)
 
@@ -93,7 +93,7 @@ CompanyEmployeeApp/
 ├── Controllers/      # HTTP API; call services only (async)
 │   ├── CompaniesController.cs
 │   └── EmployeesController.cs
-├── Program.cs        # DI: DbContext, services; CORS, Swagger
+├── Program.cs        # DI: DbContext, services; CORS
 ├── appsettings.json # Connection string
 └── client-app/       # Angular frontend (optional)
 ```
@@ -153,6 +153,5 @@ CompanyEmployeeApp/
 
 - **Backend:** ASP.NET Core 8, Entity Framework Core 8, Npgsql (PostgreSQL).
 - **Frontend:** Angular (in `client-app/`).
-- **API docs:** Swagger UI at `/swagger`.
 
 Use this repo to practice a clean **EF Core + async** CRUD API and to brush up on **OOP** and **layered design** for interviews.

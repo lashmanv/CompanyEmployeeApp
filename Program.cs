@@ -17,11 +17,6 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new() { Title = "Company & Employee API", Version = "v1" });
-});
 
 // Services: one per aggregate (Companies, Employees)
 builder.Services.AddScoped<ICompanyService, CompanyService>();
@@ -30,12 +25,7 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 var app = builder.Build();
 
 app.UseCors();
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+app.MapGet("/", () => Results.Ok("Company & Employee API"));
 app.MapControllers();
 app.Run();

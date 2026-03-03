@@ -51,4 +51,9 @@ app.MapHealthChecks("/health/ready", new HealthCheckOptions
 
 app.MapGet("/", () => Results.Ok("Company & Employee API"));
 app.MapControllers();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 app.Run();

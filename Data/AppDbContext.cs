@@ -49,6 +49,27 @@ public class AppDbContext : DbContext
             .WithOne()
             .HasForeignKey<EmployeeDetails>(d => d.EmployeeId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        // Soft delete: exclude archived employees by default (use IgnoreQueryFilters() to include)
+        modelBuilder.Entity<Employee>().HasQueryFilter(e => !e.IsDeleted);
+    }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        var now = DateTime.UtcNow;
+        foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+        {
+            if (entry.State == EntityState.Added)
+            {
+                entry.Entity.CreatedAt = now;
+                entry.Entity.UpdatedAt = now;
+            }
+            else if (entry.State == EntityState.Modified)
+            {
+                entry.Entity.UpdatedAt = now;
+            }
+        }
+        return await base.SaveChangesAsync(cancellationToken);
     }
 
     static string ToSnakeCase(string name)

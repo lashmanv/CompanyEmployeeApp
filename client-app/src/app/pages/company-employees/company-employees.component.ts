@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../models/company.model';
-import { Employee } from '../../models/employee.model';
+import { EmployeeListItem } from '../../models/employee.model';
 
 @Component({
   selector: 'app-company-employees',
@@ -38,15 +38,16 @@ import { Employee } from '../../models/employee.model';
     }
   `,
   styles: [`
-    .table { width: 100%; border-collapse: collapse; }
-    .table th, .table td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+    .table th, .table td { text-align: left; padding: calc(var(--space) * 2) calc(var(--space) * 3); border-bottom: 1px solid var(--border); }
+    .table th { font-weight: 600; color: var(--text-secondary); font-size: 12px; }
+    .table tbody tr:hover { background: var(--bg); }
+    a { color: var(--accent); }
   `]
 })
 export class CompanyEmployeesComponent implements OnInit {
   company: Company | null = null;
-  employees: Employee[] = [];
+  employees: EmployeeListItem[] = [];
   loading = true;
 
   constructor(

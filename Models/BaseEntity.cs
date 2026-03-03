@@ -3,6 +3,7 @@ namespace CompanyEmployeeApp.Models;
 /// <summary>
 /// OOP - ABSTRACTION & INHERITANCE: Abstract base class that provides common behavior.
 /// Cannot be instantiated directly; Company and Employee inherit from it.
+/// Includes audit fields (CreatedAt, UpdatedAt) set automatically on SaveChanges.
 /// </summary>
 public abstract class BaseEntity : IEntity
 {
@@ -18,6 +19,12 @@ public abstract class BaseEntity : IEntity
             _id = value;
         }
     }
+
+    /// <summary>Set by DbContext on insert.</summary>
+    public DateTime CreatedAt { get; set; }
+
+    /// <summary>Set by DbContext on insert and update.</summary>
+    public DateTime UpdatedAt { get; set; }
 
     protected BaseEntity(int id)
     {

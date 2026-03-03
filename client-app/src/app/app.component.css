@@ -1,21 +1,21 @@
 .nav {
-  background: #1a1a2e;
-  padding: 0.75rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
   display: flex;
-  gap: 1.5rem;
+  gap: calc(var(--space) * 2);
   align-items: center;
 }
 .nav a {
-  color: #eaeaea;
-  text-decoration: none;
+  color: var(--text-primary);
   font-weight: 500;
 }
 .nav a:hover,
 .nav a.active {
-  color: #7eb8da;
+  color: var(--accent);
 }
 .main {
-  padding: 1.5rem;
-  max-width: 900px;
+  padding: calc(var(--space) * 3);
+  max-width: 960px;
   margin: 0 auto;
 }

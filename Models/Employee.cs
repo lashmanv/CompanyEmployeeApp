@@ -47,6 +47,12 @@ public class Employee : BaseEntity
 
     public int CompanyId { get; set; }
 
+    /// <summary>Navigation to company (for queries/sorting).</summary>
+    public Company? Company { get; set; }
+
+    /// <summary>Soft delete: when true, employee is archived and excluded from default queries.</summary>
+    public bool IsDeleted { get; set; }
+
     /// <summary>
     /// Navigation: Employee has-one EmployeeDetails (composition).
     /// </summary>

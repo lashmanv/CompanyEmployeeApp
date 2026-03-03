@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ApiService } from './api.service';
 import { Company, CreateCompanyRequest } from '../models/company.model';
-import { Employee } from '../models/employee.model';
+import { EmployeeListItem } from '../models/employee.model';
 
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
@@ -22,8 +22,8 @@ export class CompanyService {
     return this.http.get<Company>(`${this.url}/${id}`).pipe(catchError(this.handleError));
   }
 
-  getEmployees(id: number): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.url}/${id}/employees`).pipe(catchError(this.handleError));
+  getEmployees(id: number): Observable<EmployeeListItem[]> {
+    return this.http.get<EmployeeListItem[]>(`${this.url}/${id}/employees`).pipe(catchError(this.handleError));
   }
 
   create(req: CreateCompanyRequest): Observable<Company> {

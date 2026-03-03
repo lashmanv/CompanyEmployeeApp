@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
+import { ConfigService } from './config.service';
 
-/** Base URL for the .NET API (OOP learning backend). */
+/** Base URL for the API (from ConfigService; configurable via /config.json in K8s). */
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  readonly baseUrl = 'http://localhost:5297/api';
+  get baseUrl(): string {
+    return this.config.apiUrl;
+  }
+  constructor(private config: ConfigService) {}
 }

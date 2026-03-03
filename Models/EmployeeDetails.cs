@@ -32,6 +32,9 @@ public class EmployeeDetails : IEntity
         set => _department = value ?? string.Empty;
     }
 
+    /// <summary>Role for filtering (e.g. Developer, Manager).</summary>
+    public string Role { get; set; } = string.Empty;
+
     // DB: date_of_birth DATE (nullable), join_date DATE (nullable)
     public DateTime? DateOfBirth { get; set; }
     public DateTime? JoinDate { get; set; }

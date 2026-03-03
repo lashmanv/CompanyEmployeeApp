@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface AppConfig {
   apiUrl: string;
 }
 
 const defaultConfig: AppConfig = {
-  apiUrl: 'http://localhost:5297/api'
+  apiUrl: environment.apiUrl
 };
 
 /**
